@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
-import LDClient from 'ldclient-js';
+import * as LDClient from 'ldclient-js';
+import { User } from '../../shared/services/user';
 
 interface Song {
   name: string,
@@ -10,7 +11,7 @@ interface Song {
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
 
@@ -24,8 +25,6 @@ export class DashboardComponent {
     name: '',
     LP: ''
   }
-
-
 
   add() {
     if (this.newSong.name.trim().length === 0) { return; }
@@ -55,7 +54,7 @@ export class DashboardComponent {
 
   constructor(public authService: AuthService) {
     this.ldclient.on('ready', this.onLaunchDarklyReady.bind(this));
-    // ldclient.on('change', render);
+    this.ldclient.on('change', this.onLaunchDarklyReady.bind(this));
   }
 
 }

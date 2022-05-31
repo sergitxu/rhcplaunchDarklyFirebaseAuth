@@ -1,0 +1,12 @@
+form {
+    margin-top: 20px;
+}
+
+.user-data {
+    display: flex;
+    margin-top: 20px;
+
+    &__text {
+        margin-left: 20px;
+    }
+}

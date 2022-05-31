@@ -1,58 +1,67 @@
 <!-- Sidebar navigation -->
-<div class="container-fluid">
-    <div class="row">
-        <nav class="col-md-2 d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active">
-                            <i class="fas fa-user"></i>User Profile
-                        </a>
-                    </li>
-                    <!-- Calling SignOut() Api from AuthService -->
-                    <li class="nav-item">
-                        <a class="nav-link" (click)="authService.SignOut()">
-                            <i class="fas fa-sign-out-alt"></i>Log out
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Main content -->
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="inner-adjust">
-                <div class="pt-3 pb-2 mb-3 border-bottom">
-                    <p>User Profile</p>
-                </div>
-                <!-- Show user data when logged in -->
-                <div class="row" *ngIf="authService.userData as user">
-                    <div class="col-md-12">
-                        <div class="media">
+<div class="row">
+    <div class="col-xl-8">
+        <section class="hero-card" *ngIf="authService.userData as user">
+            <div class="col-md-7 col-lg-6 col-xl-7">
+                <div class="hero-card-content">
+                    <h2 class="card-title">
+                        Welcome, <strong>{{(user.displayName) ? user.displayName : 'user'}}</strong>
+                    </h2>
+                    <div class="user-data">
+                        <div>
                             <img *ngIf="user.photoURL" class="align-self-start mr-5 img-thumbnail rounded-circle"
                                 src="{{(user.photoURL) ? user.photoURL : '/assets/dummy-user.png'}}"
                                 alt="{{user.displayName}}">
-                            <div class="media-body">
-                                <p>Hello <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></p>
-                                <p>User ID: <strong>{{user.uid}}</strong></p>
-                                <p>Email: <strong>{{user.email}}</strong></p>
-                                <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
-                            </div>
+                        </div>
+                        <div class="user-data__text">
+                            <p>User ID: <strong>{{user.uid}}</strong></p>
+                            <p>Email: <strong>{{user.email}}</strong></p>
+                            <p>Email Verified: <strong>{{user.emailVerified}}</strong></p>
+                            <button type="button" class="btn btn-primary" (click)="authService.SignOut()">Log
+                                out</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <h2>My favourite RHCP songs:</h2>
-            <ul id="songsList">
-                <li *ngFor="let song of songs">
-                    <strong>{{ song.name }}</strong> - {{ song.LP }}
-                </li>
-            </ul>
-            <form (ngSubmit)="add()" *ngIf="editableSongList">
-                <input type="text" placeholder="Name" aria-label="Name" name="name" [(ngModel)]="newSong.name">
-                <input type="text" placeholder="LP" aria-label="LP" [value]="newSong.LP" name="LP"
-                    [(ngModel)]="newSong.LP">
-                <button type="submit">Agregar</button>
-            </form>
-        </main>
+            <div class="col-md-5 col-lg-6 col-xl-5 pr-md-0 mb-n32 justify-content-center justify-content-md-end">
+                <picture class="hero-card-illustration">
+                    <img class="show-on-light"
+                        src="https://ux.visma.com/weblibrary/latest/development/documentation/assets/img/house-illustration-light.svg"
+                        alt="House Illustration">
+                </picture>
+            </div>
+        </section>
+
+        <h2>My favourite RHCP songs:</h2>
+        <ul id="songsList" class="list-group col-xxl-5 col-xl-8">
+            <li *ngFor="let song of songs" class="list-group-item">
+                <strong>{{ song.name }}</strong> - {{ song.LP }}
+            </li>
+        </ul>
+
+
+        <form (ngSubmit)="add()" *ngIf="editableSongList" class="form-horizontal col-md-8 col-xxl-5 col-xl-8">
+
+
+            <div class="form-group">
+                <label for="name" class="col-sm-3 control-label">Song name</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="Name" aria-label="Name" name="name" [(ngModel)]="newSong.name"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="LP" class="col-sm-3 control-label">LP</label>
+                <div class="col-sm-9">
+                    <input type="text" placeholder="LP" aria-label="LP" [value]="newSong.LP" name="LP"
+                        [(ngModel)]="newSong.LP" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9 offset-md-3">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

@@ -2,24 +2,24 @@
     <div class="displayTableCell">
         <div class="authBlock">
             <h3>Sign In</h3>
-            <div class="formGroup">
-                <input type="text" class="formControl" placeholder="Username" #userName required aria-label="username">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" #userName required aria-label="username">
             </div>
-            <div class="formGroup">
-                <input type="password" class="formControl" placeholder="Password" #userPassword required
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" #userPassword required
                     aria-label="password">
             </div>
             <!-- Calling SignIn Api from AuthService -->
-            <div class="formGroup">
-                <input type="button" class="btn btnPrimary" value="Log in"
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" value="Log in"
                     (click)="authService.SignIn(userName.value, userPassword.value)">
             </div>
-            <div class="formGroup">
+            <div class="form-group">
                 <span class="or"><span class="orInner">Or</span></span>
             </div>
             <!-- Calling GoogleAuth Api from AuthService -->
-            <div class="formGroup">
-                <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary googleBtn" (click)="authService.GoogleAuth()">
                     <i class="fab fa-google-plus-g"></i>
                     Log in with Google
                 </button>

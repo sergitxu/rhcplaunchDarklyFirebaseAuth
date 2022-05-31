@@ -2,23 +2,23 @@
     <div class="displayTableCell">
         <div class="authBlock">
             <h3>Sign Up</h3>
-            <div class="formGroup">
-                <input type="email" class="formControl" placeholder="Email Address" #userEmail required
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email Address" #userEmail required
                     aria-label="email" />
             </div>
-            <div class="formGroup">
-                <input type="password" class="formControl" placeholder="Password" #userPwd required
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" #userPwd required
                     aria-label="password" />
             </div>
-            <div class="formGroup">
-                <input type="button" class="btn btnPrimary" value="Sign Up"
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" value="Sign Up"
                     (click)="authService.SignUp(userEmail.value, userPwd.value)" />
             </div>
-            <div class="formGroup">
+            <div class="form-group">
                 <span class="or"><span class="orInner">Or</span></span>
             </div>
             <!-- Continue with Google -->
-            <div class="formGroup">
+            <div class="form-group">
                 <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
                     <i class="fab fa-google-plus-g"></i>
                     Continue with Google
