@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import * as LDClient from 'ldclient-js';
-import { User } from '../../shared/services/user';
 
 interface Song {
   name: string,
