@@ -25,6 +25,8 @@ export class DashboardComponent {
     LP: ''
   }
 
+
+
   add() {
     if (this.newSong.name.trim().length === 0) { return; }
 
@@ -39,19 +41,19 @@ export class DashboardComponent {
   /* LaunchDarkly */
 
   user: Object = {
-    key: 'abc123'
+    key: 'key'
   }
+
   editableSongList: boolean = false;
 
   ldclient = LDClient.initialize('62165020fea3b214d035cbe8', this.user);
 
+
   onLaunchDarklyReady() {
-    console.log('This is the variation: ', this.ldclient.variation('EditableSongList'));
     this.editableSongList = this.ldclient.variation('EditableSongList');
   }
 
   constructor(public authService: AuthService) {
-
     this.ldclient.on('ready', this.onLaunchDarklyReady.bind(this));
     // ldclient.on('change', render);
   }
