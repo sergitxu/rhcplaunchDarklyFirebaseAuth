@@ -41,6 +41,7 @@ export class DashboardComponent {
 
   user: Object = {
     key: 'key'
+    /* TODO add real uidTODO essage */
   }
 
   editableSongList: boolean = false;
